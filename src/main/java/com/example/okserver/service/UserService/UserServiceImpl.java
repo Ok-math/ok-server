@@ -1,7 +1,7 @@
 package com.example.okserver.service.UserService;
 
 import com.example.okserver.domain.User;
-import com.example.okserver.packet.responcebody.LoginResponseBody;
+import com.example.okserver.packet.responsebody.LoginResponseBody;
 import com.example.okserver.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +22,14 @@ public class UserServiceImpl implements UserService{
         if(!userRepository.findById(user.getId()).isPresent()) {
             userRepository.save(user);
             loginResponseBody.setId(user.getId());
-            loginResponseBody.setName(user.getName());
+            loginResponseBody.setName("kwon");
             loginResponseBody.setPassword(user.getPassword());
             loginResponseBody.setResult(true);
         }
         else{
+            loginResponseBody.setId(user.getId());
+            loginResponseBody.setName("kwon");
+            loginResponseBody.setPassword(user.getPassword());
             loginResponseBody.setResult(false);
         }
 

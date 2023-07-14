@@ -1,4 +1,4 @@
-package com.example.okserver.packet.responcebody;
+package com.example.okserver.packet.responsebody;
 
 
 import lombok.Data;

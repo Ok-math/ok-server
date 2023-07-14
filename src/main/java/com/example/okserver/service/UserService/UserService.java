@@ -1,7 +1,7 @@
 package com.example.okserver.service.UserService;
 
 import com.example.okserver.domain.User;
-import com.example.okserver.packet.responcebody.LoginResponseBody;
+import com.example.okserver.packet.responsebody.LoginResponseBody;
 import org.springframework.stereotype.Service;
 
 
