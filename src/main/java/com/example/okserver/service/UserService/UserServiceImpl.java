@@ -7,34 +7,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
-
     private final UserRepository userRepository;
     //없어도댐
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    private LoginResponseBody loginResponseBody = new LoginResponseBody();
-
 
     @Override
     public LoginResponseBody createUser(User user) {
+        LoginResponseBody loginResponseBody = new LoginResponseBody();
+
         if(!userRepository.findById(user.getId()).isPresent()) {
             userRepository.save(user);
+
             loginResponseBody.setId(user.getId());
-            loginResponseBody.setName("kwon");
+            loginResponseBody.setName(user.getName());
             loginResponseBody.setPassword(user.getPassword());
             loginResponseBody.setResult(true);
         }
         else{
-            loginResponseBody.setId(user.getId());
-            loginResponseBody.setName("kwon");
-            loginResponseBody.setPassword(user.getPassword());
             loginResponseBody.setResult(false);
         }
 
         return loginResponseBody;
     }
+
 
     @Override
     public boolean existUser(String id) {

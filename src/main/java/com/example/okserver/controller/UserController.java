@@ -18,11 +18,16 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/login")
-    public LoginResponseBody login(@RequestBody LoginRequestBody requestBody){
+    @PostMapping("/signup")
+    public LoginResponseBody signup(@RequestBody LoginRequestBody requestBody){
         User user = new User();
         user.setId(requestBody.getId());
         user.setPassword(requestBody.getPassword());
+        user.setName(requestBody.getName());
         return userService.createUser(user);
+    }
+    @PostMapping("/login")
+    public boolean login(@RequestBody LoginRequestBody requestBody){
+        return userService.existUser(requestBody.getId());
     }
 }
