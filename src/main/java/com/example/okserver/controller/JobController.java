@@ -21,6 +21,7 @@ public class JobController {
         this.jobService = jobService;
     }
 
+
     @PostMapping
     public GetMonthlyResponseBody getMonthly(@RequestBody GetMonthlyRequestBody requestBody){
         return jobService.returnMonthlyJobList(requestBody);

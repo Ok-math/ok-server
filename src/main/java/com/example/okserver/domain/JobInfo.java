@@ -1,9 +1,6 @@
 package com.example.okserver.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +20,9 @@ public class JobInfo {
     private String name;
     private Integer money;
 
-    @OneToMany
-    private ArrayList<TimeAndDay> workingDay = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn
+//    private ArrayList<TimeAndDay> workingDay = new ArrayList<>();
 
 
 }
