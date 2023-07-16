@@ -8,11 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//상속관계 고려해보기
 public class Job {
     @Id
     @GeneratedValue
@@ -20,8 +25,17 @@ public class Job {
 
     private String name;
     private int money;
-    private Long start;
-    private Long end;
+    private String userId;
+    private LocalTime start;
+    private LocalTime end;
+    private LocalDate date;
+    private Long totalHour;
+    private Long totalMoney;
 
-
+    public void setTotalHour(LocalTime start, LocalTime end) {
+        this.totalHour = Duration.between(start, end).toHours();
+    }
+    public void setTotalMoney(int money, Long totalHour){
+        this.totalMoney = money * totalHour;
+    }
 }
