@@ -22,13 +22,14 @@ public class Job {
     @Id
     @GeneratedValue
     private Long id;
-
+    private String userId;
     private String name;
     private int money;
-    private String userId;
     private LocalTime start;
+
     private LocalTime end;
     private LocalDate date;
+    private Integer month;
     private Long totalHour;
     private Long totalMoney;
 
@@ -37,5 +38,9 @@ public class Job {
     }
     public void setTotalMoney(int money, Long totalHour){
         this.totalMoney = money * totalHour;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = getDate().getMonthValue();
     }
 }
