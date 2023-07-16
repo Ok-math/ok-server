@@ -1,4 +1,4 @@
-package com.example.okserver.service.UserService;
+package com.example.okserver.service.userService;
 
 import com.example.okserver.domain.User;
 import com.example.okserver.packet.responsebody.LoginResponseBody;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
-    //없어도댐
+
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean existUser(String id) {
-        if(userRepository.findById(id).isPresent())
+        if(!userRepository.findById(id).isPresent())
             return true;
         else
             return false;

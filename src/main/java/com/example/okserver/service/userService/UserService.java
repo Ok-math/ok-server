@@ -1,4 +1,4 @@
-package com.example.okserver.service.UserService;
+package com.example.okserver.service.userService;
 
 import com.example.okserver.domain.User;
 import com.example.okserver.packet.responsebody.LoginResponseBody;

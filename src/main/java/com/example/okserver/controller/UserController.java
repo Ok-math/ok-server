@@ -4,7 +4,7 @@ package com.example.okserver.controller;
 import com.example.okserver.domain.User;
 import com.example.okserver.packet.requestbody.LoginRequestBody;
 import com.example.okserver.packet.responsebody.LoginResponseBody;
-import com.example.okserver.service.UserService.UserService;
+import com.example.okserver.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
