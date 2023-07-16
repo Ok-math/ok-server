@@ -26,7 +26,6 @@ public class Job {
     private String name;
     private int money;
     private LocalTime start;
-
     private LocalTime end;
     private LocalDate date;
     private Integer month;
@@ -34,13 +33,15 @@ public class Job {
     private Long totalMoney;
 
     public void setTotalHour(LocalTime start, LocalTime end) {
-        this.totalHour = Duration.between(start, end).toHours();
+        this.totalHour = Duration.between(start, end).toMinutes();
     }
     public void setTotalMoney(int money, Long totalHour){
-        this.totalMoney = money * totalHour;
+        double time = totalHour/60.0;
+        this.totalMoney = (long)(money * time);
     }
 
-    public void setMonth(Integer month) {
-        this.month = getDate().getMonthValue();
+    public void setMonth(LocalDate date) {
+        this.month = date.getMonthValue();
     }
+
 }

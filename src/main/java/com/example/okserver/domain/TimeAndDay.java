@@ -19,11 +19,6 @@ public class TimeAndDay {
     private LocalTime finishTime;
     private Day day;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "jobinfo_id")
-//    private JobInfo jobInfo;
-
-
 }
 enum Day {
     monday,

@@ -20,11 +20,6 @@ public class JobInfo {
     private String name;
     private Integer money;
 
-//    @OneToMany
-//    @JoinColumn
-//    private ArrayList<TimeAndDay> workingDay = new ArrayList<>();
-
-
 }
 
 
