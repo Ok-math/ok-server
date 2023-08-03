@@ -2,6 +2,7 @@ package com.example.okserver.controller;
 
 
 import com.example.okserver.domain.User;
+import com.example.okserver.packet.requestbody.JobInfoRequestBody;
 import com.example.okserver.packet.requestbody.LoginRequestBody;
 import com.example.okserver.packet.responsebody.LoginResponseBody;
 import com.example.okserver.service.userService.UserService;
@@ -20,6 +21,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public LoginResponseBody signup(@RequestBody LoginRequestBody requestBody){
+        System.out.print(new JobInfoRequestBody());
         User user = new User();
         user.setId(requestBody.getId());
         user.setPassword(requestBody.getPassword());
@@ -27,7 +29,7 @@ public class UserController {
         return userService.createUser(user);
     }
     @PostMapping("/login")
-    public boolean login(@RequestBody LoginRequestBody requestBody){
-        return userService.existUser(requestBody.getId());
+    public LoginResponseBody login(@RequestBody LoginRequestBody requestBody){
+        return userService.existUser(requestBody.getId(), requestBody.getPassword());
     }
 }

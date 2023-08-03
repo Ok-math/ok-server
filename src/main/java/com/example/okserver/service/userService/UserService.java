@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     LoginResponseBody createUser(User user);
-    boolean existUser(String id);
+    LoginResponseBody existUser(String id, String password);
 }

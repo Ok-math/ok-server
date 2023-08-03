@@ -5,6 +5,8 @@ import com.example.okserver.packet.responsebody.LoginResponseBody;
 import com.example.okserver.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
@@ -14,6 +16,8 @@ public class UserServiceImpl implements UserService{
     }
 
 
+
+    //회원가입
     @Override
     public LoginResponseBody createUser(User user) {
         LoginResponseBody loginResponseBody = new LoginResponseBody();
@@ -30,17 +34,27 @@ public class UserServiceImpl implements UserService{
             loginResponseBody.setResult(false);
         }
 
+
         return loginResponseBody;
     }
 
 
-    @Override
-    public boolean existUser(String id) {
-        if(!userRepository.findById(id).isPresent())
-            return true;
-        else
-            return false;
-    }
 
+    //로그인
+    @Override
+    public LoginResponseBody existUser(String id, String password) {
+        LoginResponseBody responseBody = new LoginResponseBody();
+        User user;
+        if(userRepository.findByIdAndPassword(id, password).isPresent()) {
+            user = userRepository.findById(id).get();
+            responseBody.setResult(true);
+            responseBody.setName(user.getName());
+            responseBody.setId(user.getId());
+        }
+        else
+            responseBody.setResult(false);
+
+        return responseBody;
+    }
 
 }

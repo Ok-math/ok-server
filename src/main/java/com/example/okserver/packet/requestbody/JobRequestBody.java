@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class JobRequestBody {
     private String userId;
     private String name;
-    private int money;
+    private Integer money;
     private LocalTime start;
     private LocalTime end;
     private LocalDate date;

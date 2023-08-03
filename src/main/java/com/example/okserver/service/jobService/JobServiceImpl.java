@@ -7,6 +7,7 @@ import com.example.okserver.packet.requestbody.JobRequestBody;
 import com.example.okserver.packet.responsebody.GetDatelyResponseBody;
 import com.example.okserver.packet.responsebody.GetMonthlyResponseBody;
 import com.example.okserver.packet.responsebody.JobResponseBody;
+import com.example.okserver.packet.responsebody.UpdateJobResponseBody;
 import com.example.okserver.repository.JobRepository;
 import com.example.okserver.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -41,10 +42,29 @@ public class JobServiceImpl implements JobService{
     }
 
     @Override
+    public UpdateJobResponseBody updateJob(Job job) {
+        return null;
+    }
+
+    @Override
+    public JobResponseBody deleteJob(Job job) {
+        JobResponseBody responseBody = new JobResponseBody();
+        if(!jobRepository.findByUserIdAndDate(job.getUserId(),job.getDate()).isPresent()){
+            jobRepository.delete(job);
+
+        }
+        else{
+            responseBody.setResult(false);
+        }
+
+        return responseBody;
+    }
+
+    @Override
     public GetMonthlyResponseBody returnMonthlyJobList(GetMonthlyRequestBody requestBody) {
         GetMonthlyResponseBody responseBody = new GetMonthlyResponseBody();
 
-        int month = requestBody.getDate().getMonthValue();
+        int month = requestBody.getMonth().getMonthValue();
         String userId = requestBody.getUserId();
         responseBody.setJobs(jobRepository.findByMonthAndUserId(month,userId));
 

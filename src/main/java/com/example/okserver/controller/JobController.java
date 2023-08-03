@@ -8,6 +8,7 @@ import com.example.okserver.packet.requestbody.JobRequestBody;
 import com.example.okserver.packet.responsebody.GetDatelyResponseBody;
 import com.example.okserver.packet.responsebody.GetMonthlyResponseBody;
 import com.example.okserver.packet.responsebody.JobResponseBody;
+import com.example.okserver.packet.responsebody.UpdateJobResponseBody;
 import com.example.okserver.service.jobService.JobService;
 import com.example.okserver.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,29 @@ public class JobController {
         return jobService.createJob(job);
     }
 
+    @PostMapping("/update")
+    public UpdateJobResponseBody updateJob(@RequestBody JobRequestBody requestBody){
+        Job job = new Job();
+        job.setUserId(requestBody.getUserId());
+        job.setName(requestBody.getName());
+        job.setDate(requestBody.getDate());
+        job.setMoney(requestBody.getMoney());
+        job.setStart(requestBody.getStart());
+        job.setEnd(requestBody.getEnd());
+        job.setDate(requestBody.getDate());
+        return jobService.updateJob(job);
+    }
 
-    @PostMapping
+    @PostMapping("/delete")
+    public JobResponseBody deleteJob(@RequestBody JobRequestBody requestBody){
+        Job job = new Job();
+        job.setUserId(requestBody.getUserId());
+        job.setDate(requestBody.getDate());
+        return jobService.deleteJob(job);
+    }
+
+
+    @PostMapping("/month")
     public GetMonthlyResponseBody getMonthly(@RequestBody GetMonthlyRequestBody requestBody){
         return jobService.returnMonthlyJobList(requestBody);
     }

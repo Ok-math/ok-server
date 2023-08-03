@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +19,17 @@ public class JobInfo {
     private String userId;
     private String name;
     private Integer money;
+
+    @OneToMany(mappedBy = "jobInfo")
+    private List<DayAndTime> dayAndTimes = new ArrayList<>();
+
+
+    public void addDayAndTime(DayAndTime dayAndTime){
+        this.dayAndTimes.add(dayAndTime);
+        if(dayAndTime.getJobInfo() != this){
+            dayAndTime.setJobInfo(this);
+        }
+    }
 
 }
 

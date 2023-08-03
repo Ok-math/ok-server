@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetMonthlyRequestBody {
-    private LocalDate date;
+    private LocalDate month;
     private String userId;
 
 }

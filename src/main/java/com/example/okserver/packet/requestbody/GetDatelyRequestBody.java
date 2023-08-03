@@ -13,6 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetDatelyRequestBody {
-    private LocalDate month;
+    private LocalDate date;
     private String userId;
 }
