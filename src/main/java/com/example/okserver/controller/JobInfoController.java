@@ -7,6 +7,8 @@ import com.example.okserver.service.jobInfoService.JobInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @CrossOrigin(allowedHeaders = "*")
 @RequestMapping("/jobinfo")
@@ -22,8 +24,13 @@ public class JobInfoController {
 
     @PostMapping("/save")
     JobInfoResponseBody jobInfo_save(@RequestBody JobInfoRequestBody requestBody){
-
         return jobInfoService.save_info(requestBody);
     }
+
+    @GetMapping("/name")
+    public ArrayList<String> show_names(@RequestParam String id){
+        return jobInfoService.show_names(id);
+    }
+
 
 }

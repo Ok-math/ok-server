@@ -45,13 +45,13 @@ public class DayAndTime {
 
 }
 enum Day {
-    monday,
-    tuesday,
-    wednesday,
-    thursday,
-    friday,
-    saturday,
-    sunday
+    월,
+    화,
+    수,
+    목,
+    금,
+    토,
+    일
 }
 
 

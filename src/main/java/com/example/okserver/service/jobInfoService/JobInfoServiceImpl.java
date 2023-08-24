@@ -56,4 +56,15 @@ public class JobInfoServiceImpl implements JobInfoService{
 
         return responseBody;
     }
+
+    @Override
+    public ArrayList<String> show_names(String id) {
+        ArrayList<String> nameList = new ArrayList<>();
+        List<JobInfo> jobs = jobInfoRepository.findByUserId(id);
+        for(JobInfo job:jobs){
+            nameList.add(job.getName());
+        }
+
+        return nameList;
+    }
 }
